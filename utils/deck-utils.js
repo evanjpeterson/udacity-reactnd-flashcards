@@ -35,7 +35,7 @@ The deck collection looks something like this:
 // Returns all of the decks along with their titles, questions, and answers.
 export const getDecks = () => {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
-    .then(results => results || {})
+    .then(results => JSON.parse(results) || {})
 }
 
 // Returns the deck associated with a title.
@@ -66,4 +66,8 @@ export const addCardToDeck = (title, card) => {
         }
       }))
     })
+}
+
+export const clearDecks = () => {
+  return AsyncStorage.removeItem(DECKS_STORAGE_KEY)
 }
