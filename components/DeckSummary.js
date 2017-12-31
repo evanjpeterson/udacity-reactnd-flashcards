@@ -5,22 +5,31 @@ import {
   TouchableOpacity,
   StyleSheet
 } from 'react-native'
+import { getDeck } from '../utils/deck-utils'
 
 export class DeckSummary extends Component {
 
   static navigationOptions = ({ navigation }) => {
     const { deck } = navigation.state.params
     return {
-      title: deck.title,
-      headerStyle: {
-        backgroundColor: '#28D'
-      },
-      headerTintColor: '#FFF'
+      title: deck.title
     }
+  }
+
+  updateDeck = () => {
+    const { deck, updateParent } = this.props.navigation.state.params
+    const { setParams } = this.props.navigation
+
+    // Tell the parent it needs to handle an update.
+    updateParent()
+    // Get the latest deck data after an update.
+    return getDeck(deck.title)
+      .then(deck => setParams({ deck }))
   }
 
   render() {
     const { deck } = this.props.navigation.state.params
+    const { navigate } = this.props.navigation
 
     return (
       <View style={styles.container}>
@@ -29,7 +38,11 @@ export class DeckSummary extends Component {
         <View style={[styles.buttonContainer, styles.topButtonContainer]}>
           <TouchableOpacity
             style={[styles.button, styles.addCardButton]}
-            onPress={() => console.log("Add Card")}>
+            onPress={() => navigate('AddCard', {
+              deck,
+              updateParent: this.updateDeck
+            })}
+          >
             <Text style={styles.darkButtonText}>
               Add Card
             </Text>

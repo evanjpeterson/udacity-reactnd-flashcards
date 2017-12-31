@@ -17,12 +17,16 @@ export class Decks extends Component {
   }
 
   componentDidMount() {
-      getDecks()
-        .then(decks => {
-          this.setState({
-            decks: Object.values(decks)
-          })
+    this.updateDecks()
+  }
+
+  updateDecks = () => {
+    return getDecks()
+      .then(decks => {
+        this.setState({
+          decks: Object.values(decks)
         })
+      })
   }
 
   render() {
@@ -39,7 +43,10 @@ export class Decks extends Component {
           renderItem={({ item: deck }) => (
             <TouchableOpacity
               style={styles.deckEntry}
-              onPress={() => navigate('DeckSummary', { deck })}
+              onPress={() => navigate('DeckSummary', {
+                deck,
+                updateParent: this.updateDecks
+              })}
             >
               <Text style={styles.deckTitle}>{deck.title}</Text>
               <Text style={styles.deckSubtitle}>{`${deck.questions.length} cards`}</Text>

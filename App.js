@@ -5,6 +5,7 @@ import { Constants } from 'expo'
 import { Decks } from './components/Decks'
 import { AddDeck } from './components/AddDeck'
 import { DeckSummary } from './components/DeckSummary'
+import { AddCard } from './components/AddCard'
 
 function CustomStatusBar (props) {
   return (
@@ -18,25 +19,42 @@ const HomeTabs = TabNavigator({
   Decks: {
     screen: Decks,
     navigationOptions: {
-      tabBarLabel: 'Decks',
-      header: null
+      tabBarLabel: 'Decks '
     }
   },
   AddDeck: {
     screen: AddDeck,
     navigationOptions: {
-      tabBarLabel: 'New Deck',
-      header: null
+      tabBarLabel: 'New Deck'
     }
   }
 })
 
 const MainNavigator = StackNavigator({
   Home: {
-    screen: HomeTabs
+    screen: HomeTabs,
+    navigationOptions: {
+      header: null
+    }
   },
   DeckSummary: {
-    screen: DeckSummary
+    screen: DeckSummary,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#28D'
+      },
+      headerTintColor: '#FFF'
+    }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card',
+      headerStyle: {
+        backgroundColor: '#28D'
+      },
+      headerTintColor: '#FFF'
+    }
   }
 })
 
