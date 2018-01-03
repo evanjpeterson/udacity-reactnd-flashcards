@@ -51,7 +51,11 @@ export class DeckSummary extends Component {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={[styles.button, styles.quizButton]}
-            onPress={() => console.log("Start Quiz")}>
+            onPress={() => {
+              if (deck.questions.length > 0) {
+                navigate('Quiz', { deck })
+              }
+            }}>
             <Text style={styles.lightButtonText}>
               Start Quiz
             </Text>
@@ -77,10 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
     color: '#AAA'
-  },
-  controls: {
-    flex: 1,
-    marginTop: 80
   },
   topButtonContainer: {
     marginTop: 80
