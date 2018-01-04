@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
-const DECKS_STORAGE_KEY = 'Udacity:ReactNanodegree:flaschards'
+const DECKS_STORAGE_KEY = 'Udacity:ReactNanodegree:flashcards'
 
 /*
 The deck collection looks something like this:
