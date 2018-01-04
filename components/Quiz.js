@@ -5,6 +5,10 @@ import {
   TouchableOpacity,
   StyleSheet
 } from 'react-native'
+import {
+  setLocalNotification,
+  clearLocalNotification
+} from '../utils/notification-utils'
 
 export class Quiz extends Component {
 
@@ -48,6 +52,13 @@ export class Quiz extends Component {
     const newNumberCorrect = correct ? numberCorrect + 1 : numberCorrect
     const newQuestionIndex = Math.min(finalQuestionIndex, questionIndex + 1)
     const showResults = questionIndex === finalQuestionIndex
+
+    if (showResults) {
+      // The user just finished a quiz! Woohoo!
+      // Clear any scheduled notifications and reschedule for a later date
+      clearLocalNotification()
+        .then(setLocalNotification)
+    }
 
     this.setState({
       numberCorrect: newNumberCorrect,

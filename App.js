@@ -7,6 +7,7 @@ import { AddDeck } from './components/AddDeck'
 import { DeckSummary } from './components/DeckSummary'
 import { AddCard } from './components/AddCard'
 import { Quiz } from './components/Quiz'
+import { setLocalNotification } from './utils/notification-utils'
 
 function CustomStatusBar (props) {
   return (
@@ -70,6 +71,12 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    // Schedule a notification to remind the user to take a quiz
+    setLocalNotification()
+  }
+
   render() {
     return (
       <View style={styles.container}>
