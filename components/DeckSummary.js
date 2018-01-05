@@ -6,6 +6,7 @@ import {
   StyleSheet
 } from 'react-native'
 import { getDeck } from '../utils/deck-utils'
+import * as colors from '../utils/colors'
 
 export class DeckSummary extends Component {
 
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 24,
     textAlign: 'center',
-    color: '#AAA'
+    color: colors.grey
   },
   topButtonContainer: {
     marginTop: 80
@@ -98,17 +99,17 @@ const styles = StyleSheet.create({
   },
   addCardButton: {
     borderWidth: 2,
-    borderColor: '#28D',
+    borderColor: colors.blue,
   },
   quizButton: {
-    backgroundColor: '#28D',
+    backgroundColor: colors.blue,
   },
   lightButtonText: {
-    color: '#FFF',
+    color: colors.white,
     fontSize: 24
   },
   darkButtonText: {
-    color: '#000',
+    color: colors.black,
     fontSize: 24
   }
 })

@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView
 } from 'react-native'
 import { addCardToDeck } from '../utils/deck-utils'
+import * as colors from '../utils/colors'
 
 export class AddCard extends Component {
   constructor(props) {
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 24,
     borderWidth: 2,
-    borderColor: '#000',
+    borderColor: colors.black,
     borderRadius: 8,
   },
   buttonContainer: {
@@ -104,13 +105,13 @@ const styles = StyleSheet.create({
   button: {
     flex: 0.5,
     height: 80,
-    backgroundColor: '#28D',
+    backgroundColor: colors.blue,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center'
   },
   buttonText: {
-    color: '#FFF',
+    color: colors.white,
     fontSize: 24
   }
 })

@@ -9,6 +9,7 @@ import { DeckSummary } from './components/DeckSummary'
 import { AddCard } from './components/AddCard'
 import { Quiz } from './components/Quiz'
 import { setLocalNotification } from './utils/notification-utils'
+import * as colors from './utils/colors'
 
 function CustomStatusBar (props) {
   return (
@@ -29,9 +30,9 @@ const MainNavigator = StackNavigator({
     screen: DeckSummary,
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#28D'
+        backgroundColor: colors.blue
       },
-      headerTintColor: '#FFF'
+      headerTintColor: colors.white
     }
   },
   AddCard: {
@@ -39,9 +40,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Add Card',
       headerStyle: {
-        backgroundColor: '#28D'
+        backgroundColor: colors.blue
       },
-      headerTintColor: '#FFF'
+      headerTintColor: colors.white
     }
   },
   Quiz: {
@@ -49,9 +50,9 @@ const MainNavigator = StackNavigator({
     navigationOptions: {
       title: 'Quiz',
       headerStyle: {
-        backgroundColor: '#28D'
+        backgroundColor: colors.blue
       },
-      headerTintColor: '#FFF'
+      headerTintColor: colors.white
     }
   }
 })
@@ -75,7 +76,6 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#000'
+    flex: 1
   },
 })

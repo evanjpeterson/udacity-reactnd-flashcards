@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native'
 import { getDecks } from '../utils/deck-utils'
+import * as colors from '../utils/colors'
 
 export class Decks extends Component {
 
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     margin: 32
   },
   separator: {
-    backgroundColor: '#000',
+    backgroundColor: colors.black,
     height: 1
   },
   deckTitle: {
@@ -57,6 +58,6 @@ const styles = StyleSheet.create({
   deckSubtitle: {
     fontSize: 24,
     textAlign: 'center',
-    color: '#AAA'
+    color: colors.grey
   }
 })

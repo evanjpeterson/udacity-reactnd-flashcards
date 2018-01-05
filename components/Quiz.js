@@ -9,6 +9,7 @@ import {
   setLocalNotification,
   clearLocalNotification
 } from '../utils/notification-utils'
+import * as colors from '../utils/colors'
 
 export class Quiz extends Component {
 
@@ -209,7 +210,7 @@ const styles = StyleSheet.create({
   flipCardText: {
     fontSize: 24,
     textAlign: 'center',
-    color: '#D22'
+    color: colors.red
   },
   flipCardButton: {
     flex: 1,
@@ -230,24 +231,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   correctButton: {
-    backgroundColor: '#3A3'
+    backgroundColor: colors.green
   },
   incorrectButton: {
-    backgroundColor: '#D22'
+    backgroundColor: colors.red
   },
   restartButton: {
     borderWidth: 2,
-    borderColor: '#28D',
+    borderColor: colors.blue,
   },
   returnButton: {
-    backgroundColor: '#28D',
+    backgroundColor: colors.blue,
   },
   lightButtonText: {
-    color: '#FFF',
+    color: colors.white,
     fontSize: 24
   },
   darkButtonText: {
-    color: '#000',
+    color: colors.black,
     fontSize: 24
   }
 })
