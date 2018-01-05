@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
-import { StackNavigator, TabNavigator } from 'react-navigation'
+import { StackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
+import { Home } from './components/Home'
 import { Decks } from './components/Decks'
 import { AddDeck } from './components/AddDeck'
 import { DeckSummary } from './components/DeckSummary'
@@ -17,24 +18,9 @@ function CustomStatusBar (props) {
   )
 }
 
-const HomeTabs = TabNavigator({
-  Decks: {
-    screen: Decks,
-    navigationOptions: {
-      tabBarLabel: 'Decks '
-    }
-  },
-  AddDeck: {
-    screen: AddDeck,
-    navigationOptions: {
-      tabBarLabel: 'New Deck'
-    }
-  }
-})
-
 const MainNavigator = StackNavigator({
   Home: {
-    screen: HomeTabs,
+    screen: Home,
     navigationOptions: {
       header: null
     }

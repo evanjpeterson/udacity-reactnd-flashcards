@@ -9,29 +9,9 @@ import {
 import { getDecks } from '../utils/deck-utils'
 
 export class Decks extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      decks: []
-    }
-  }
-
-  componentDidMount() {
-    this.updateDecks()
-  }
-
-  updateDecks = () => {
-    return getDecks()
-      .then(decks => {
-        this.setState({
-          decks: Object.values(decks)
-        })
-      })
-  }
 
   render() {
-    const { decks } = this.state
-    const { navigate } = this.props.navigation
+    const { decks, updateParent, navigate } = this.props.screenProps
 
     return (
       <View>
@@ -45,7 +25,7 @@ export class Decks extends Component {
               style={styles.deckEntry}
               onPress={() => navigate('DeckSummary', {
                 deck,
-                updateParent: this.updateDecks
+                updateParent
               })}
             >
               <Text style={styles.deckTitle}>{deck.title}</Text>

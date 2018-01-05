@@ -18,20 +18,37 @@ export class AddDeck extends Component {
   }
 
   addDeck = () => {
-    const { navigate } = this.props.navigation
+    const { updateParent, navigate } = this.props.screenProps
     const { title } = this.state
 
     if (!title) {
       return
     }
+
+    // Check if this deck already exists.
     getDeck(title)
       .then(deck => {
-        // No deck exists yet for this title, go ahead and create one.
-        if (deck == null) {
+        if (deck) {
+          // The user has already created a deck with this name.
+          // Navigate them to the deck page.
+          navigate('DeckSummary', {
+            deck,
+            updateParent
+          })
+        } else {
+          // Otherwise, no deck exists yet for this title, so create one.
           saveDeckTitle(title)
             .then(() => {
-              // Go back home, clear out input state.
-              navigate('Home')
+              // Get the deck that was just created.
+              return getDeck(title)
+            })
+            .then(deck => {
+              // Navigate to the new deck's page, clear out input state.
+              navigate('DeckSummary', {
+                deck,
+                updateParent
+              })
+
               this.setState({
                 title: ''
               })
